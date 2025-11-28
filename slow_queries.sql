@@ -1,10 +1,3 @@
-# main
-
-## Slow query detection
-
-Run the following SQL against a MySQL instance with `performance_schema` enabled to find the 20 slowest queries by average execution time:
-
-```sql
 -- Summary of slow queries using Performance Schema in MySQL
 -- Requires performance_schema to be enabled and statement instrumentation on.
 -- Shows the 20 slowest queries by average execution time, excluding system schemas.
@@ -24,6 +17,3 @@ WHERE SCHEMA_NAME NOT IN ('mysql', 'performance_schema', 'information_schema', '
   AND DIGEST_TEXT IS NOT NULL
 ORDER BY AVG_TIMER_WAIT DESC
 LIMIT 20;
-```
-
-The query excludes system schemas, shows when each statement was first and last seen, and includes timing and row statistics to help investigate slow workloads.
